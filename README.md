@@ -1,32 +1,32 @@
-# ai-chatbotfast
+# @hammim-in/collbot-client
 
-AI-powered chatbot package for fast and efficient conversational AI in Node.js applications.
+AI-powered CollBot package for fast and efficient conversational AI in React.ts applications.
 
 ## Installation
 
 Install the package using npm:
 
 ```sh
-npm install ai-chatbotfast
+npm npm i @hammim-in/collbot-client
 ```
 
 Or using yarn:
 
 ```sh
-yarn add ai-chatbotfast
+yarn npm i @hammim-in/collbot-client
 ```
 
 ## Usage
 
 ```javascript
 "use client";
-import Chatbot from 'ai-chatbotfast';
+import CollBot from 'ai-chatbotfast';
 
 function App() {
-  return <Chatbot theme={{bgColor: "red"}}/>;
+  return <CollBot theme={{bgColor: "red"}}/>;
 }
 
-export default Chatbot;
+export default CollBot;
 ```
 
 ## Features
@@ -46,12 +46,12 @@ You can pass the following options when initializing the chatbot:
 | `model`  | `string` | AI model to use (e.g., `gpt-3.5-turbo`) (upcoming) |
 | `temperature` | `number` | Adjusts randomness in responses (default: `0.7`) |
 | `bgColor` | `string` | set background color |
-| `primaryColor` | `string` | change primary color of ai-chatbot |
+| `primaryColor` | `string` | change primary color of collbot-client |
 
 Example:
 
 ```javascript
-const bot = new Chatbot({
+const bot = new collbot({
   apiKey: 'your-api-key',
   model: 'gpt-4',
   temperature: 0.9
@@ -64,5 +64,5 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ## License
 
-MIT License © 2025 Kanhaiya
+MIT License © 2025 Hammim.in
 

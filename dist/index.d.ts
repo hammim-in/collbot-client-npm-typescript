@@ -11,6 +11,6 @@ interface ChatProps {
         primaryColor?: string;
     };
 }
-declare const ChatBot: React.FC<ChatProps>;
+declare const CollBot: React.FC<ChatProps>;
 
-export { ChatBot as default };
+export { CollBot as default };

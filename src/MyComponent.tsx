@@ -16,7 +16,7 @@ interface ChatProps {
 }
 
 
-const ChatBot: React.FC<ChatProps> = ({ theme }) => {
+const CollBot: React.FC<ChatProps> = ({ theme }) => {
   const bgColor = theme?.bgColor || "white";
   const [messages, setMessages] = useState<Array<{ sender: boolean; msg: string }>>([]);
   const [text, setText] = useState("");
@@ -206,4 +206,4 @@ const ChatBot: React.FC<ChatProps> = ({ theme }) => {
   );
 };
 
-export default ChatBot;
+export default CollBot;

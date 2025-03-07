@@ -1,2 +1,2 @@
-import ChatBot from "./MyComponent";
-export default ChatBot;
+import CollBot from "./MyComponent";
+export default CollBot;
