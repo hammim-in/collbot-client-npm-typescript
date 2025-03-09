@@ -1,6 +1,6 @@
 # @hammim-in/collbot-client
 
-AI-powered CollBot package for fast and efficient conversational AI in React.ts applications.
+Collbot is an AI-driven chatbot solution that seamlessly integrates into your website via a simple package. Easily configure your chatbot with company-specific details, terms, and policies, enabling it to provide instant and accurate responses to customer queries. Enhance user engagement and automate customer interactions effortlessly with Collbot. 🚀
 
 ## Installation
 
@@ -20,7 +20,7 @@ yarn npm i @hammim-in/collbot-client
 
 ```javascript
 "use client";
-import CollBot from 'ai-chatbotfast';
+import CollBot from '@hammim-in/collbot-client';
 
 function App() {
   return <CollBot theme={{bgColor: "red"}}/>;
