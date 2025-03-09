@@ -1,2 +1,2 @@
-import CollBot from "./MyComponent";
+import CollBot from "./CollBotComponent";
 export default CollBot;

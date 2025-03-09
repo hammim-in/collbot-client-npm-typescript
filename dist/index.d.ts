@@ -1,4 +1,4 @@
-import React from 'react';
+import { JSX } from 'react';
 
 declare global {
     interface Window {
@@ -11,6 +11,6 @@ interface ChatProps {
         primaryColor?: string;
     };
 }
-declare const CollBot: React.FC<ChatProps>;
+declare const CollBot: ({ theme }: ChatProps) => JSX.Element;
 
 export { CollBot as default };

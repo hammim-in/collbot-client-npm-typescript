@@ -1,6 +1,6 @@
 import { CloseCircleFilled, DiscordOutlined, SendOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import React, { useEffect, useRef, useState } from "react";
+import React, { JSX, useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -16,7 +16,7 @@ interface ChatProps {
 }
 
 
-const CollBot: React.FC<ChatProps> = ({ theme }) => {
+const CollBot = ({ theme }: ChatProps): JSX.Element => {
   const bgColor = theme?.bgColor || "white";
   const [messages, setMessages] = useState<Array<{ sender: boolean; msg: string }>>([]);
   const [text, setText] = useState("");
@@ -105,11 +105,11 @@ const CollBot: React.FC<ChatProps> = ({ theme }) => {
   }, []);
 
   useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://cdn.tailwindcss.com";
-        script.async = true;
-        document.head.appendChild(script);
-      }, []);
+    const script = document.createElement("script");
+    script.src = "https://cdn.tailwindcss.com";
+    script.async = true;
+    document.head.appendChild(script);
+  }, []);
 
   return (
     <>
