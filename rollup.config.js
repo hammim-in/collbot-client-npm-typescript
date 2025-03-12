@@ -3,6 +3,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
+import url from "@rollup/plugin-url"; // 
+import copy from "rollup-plugin-copy"; 
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 import postcss from "rollup-plugin-postcss";
@@ -31,6 +33,16 @@ export default [
       typescript({ tsconfig: "./tsconfig.json" }),
       terser(),
       postcss(),
+      url({ // ✅ Add this block to handle images
+        include: ["**/*.png", "**/*.jpg", "**/*.svg", "**/*.gif"],
+        limit: 10000, // Convert images < 10kb to Base64
+        publicPath: "/assets/", // Set public path for larger images
+      }),
+      copy({
+        targets: [
+          { src: "src/assets/*", dest: "dist/assets" }, // ✅ Correct copy config
+        ],
+      }),
     ],
     external: ["react", "react-dom"],
   },

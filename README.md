@@ -7,13 +7,13 @@ Collbot is an AI-driven chatbot solution that seamlessly integrates into your we
 Install the package using npm:
 
 ```sh
-npm npm i @hammim-in/collbot-client
+npm i @hammim-in/collbot-client
 ```
 
 Or using yarn:
 
 ```sh
-yarn npm i @hammim-in/collbot-client
+yarn i @hammim-in/collbot-client
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ yarn npm i @hammim-in/collbot-client
 import CollBot from '@hammim-in/collbot-client';
 
 function App() {
-  return <CollBot theme={{bgColor: "red"}}/>;
+  return <CollBot AICHART_RECAPTCHA_FRONTED_KEY="6Ld4E98qAAAAA********co6T4iC27" YOUR_SITE_KEY="6Ld4E98qAA********o6T4iC27" />;
 }
 
 export default CollBot;
@@ -42,9 +42,8 @@ You can pass the following options when initializing the chatbot:
 
 | Option  | Type   | Description |
 |---------|--------|-------------|
-| `apiKey` | `string` | Your API key for the AI model (upcoming) |
-| `model`  | `string` | AI model to use (e.g., `gpt-3.5-turbo`) (upcoming) |
-| `temperature` | `number` | Adjusts randomness in responses (default: `0.7`) |
+| `AICHART_RECAPTCHA_FRONTED_KEY` | `string` | Your recaptcha API AICHART_RECAPTCHA_FRONTED_KEY  |
+| `YOUR_SITE_KEY`  | `string` | Your recaptcha  YOUR_SITE_KEY (upcoming) |
 | `bgColor` | `string` | set background color |
 | `primaryColor` | `string` | change primary color of collbot-client |
 
