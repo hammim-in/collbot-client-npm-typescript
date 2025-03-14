@@ -115,7 +115,7 @@ const CollBot = ({
             {isOpen && (
                 <div style={styles.chatContainer}>
                     <div style={styles.header}>
-                    <img src={icon} alt="" style={styles.chatIcon} />
+                        <img src={icon} alt="" style={styles.chatIcon} />
                         {/* <span> AI Chat</span> */}
                         <button onClick={toggleChat} style={styles.closeButton}>✖</button>
                     </div>
@@ -176,7 +176,19 @@ const styles: { [key: string]: React.CSSProperties } = {
         position: "fixed", bottom: "10px", right: "10px", padding: "20px", fontSize: "20px", border: "none", borderRadius: "50%", cursor: "pointer"
     },
     chatContainer: {
-        position: "fixed", bottom: "50px", right: "20px", width: "350px", height: "400px", background: "white", boxShadow: "0px 4px 6px rgba(0,0,0,0.1)", borderBottomLeftRadius: "10px", borderTopRightRadius: "10px", display: "flex", gap: "15px", flexDirection: "column"
+        fontFamily: "'Roboto', sans-serif",
+        position: "fixed",
+        bottom: "50px",
+        right: "20px",
+        width: "350px",
+        height: "400px",
+        background: "white",
+        boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
+        borderBottomLeftRadius: "10px",
+        borderTopRightRadius: "10px",
+        display: "flex",
+        gap: "15px",
+        flexDirection: "column"
     },
     header: {
         background: "#6200ea", color: "white", padding: "10px", display: "flex", justifyContent: "space-between", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", alignItems: "center"

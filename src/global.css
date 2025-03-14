@@ -1,4 +1,6 @@
-  .collbot-grecaptcha-badge { 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.collbot-grecaptcha-badge { 
     display: none !important;
   }
 
