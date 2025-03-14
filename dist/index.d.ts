@@ -5,9 +5,13 @@ declare global {
         grecaptcha: any;
     }
 }
-declare const CollBot: ({ reCaptchaClientId, icon }: {
+declare const CollBot: ({ reCaptchaClientId, theme }: {
     reCaptchaClientId?: string;
-    icon: string;
+    theme: {
+        icon: string;
+        primaryColor: string;
+        secondryColor: string;
+    };
 }) => react_jsx_runtime.JSX.Element;
 
 export { CollBot as default };

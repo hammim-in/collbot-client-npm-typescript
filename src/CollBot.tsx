@@ -11,11 +11,15 @@ declare global {
 
 const CollBot = ({
     reCaptchaClientId,
-    icon
+    theme
 }:
     {
         reCaptchaClientId?: string,
-        icon: string,
+        theme: {
+            icon: string,
+            primaryColor: string,
+            secondryColor: string,
+        }
     }) => {
     const [messages, setMessages] = useState<Array<{ sender: boolean; msg: string }>>([]);
     const [text, setText] = useState("");
@@ -104,18 +108,18 @@ const CollBot = ({
     }, []);
 
     return (
-        <>
+        <div style={{ zIndex: 10000 }}>
             {!isOpen && (
                 <button onClick={toggleChat} style={styles.chatButton}>
-                    <img src={icon} alt="" style={styles.chatIcon} />
+                    <img src={theme.icon} alt="" style={styles.chatIcon} />
 
                 </button>
             )}
 
             {isOpen && (
                 <div style={styles.chatContainer}>
-                    <div style={styles.header}>
-                        <img src={icon} alt="" style={styles.chatIcon} />
+                    <div style={{ ...styles.header, background: theme.primaryColor, }}>
+                        <img src={theme.icon} alt="" style={styles.chatIcon} />
                         {/* <span> AI Chat</span> */}
                         <button onClick={toggleChat} style={styles.closeButton}>✖</button>
                     </div>
@@ -135,7 +139,7 @@ const CollBot = ({
                                         alignItems: "center",
                                         gap: "5px"
                                     }}>
-                                        <img src="reddit.png" alt="" style={styles.chatIcon} />
+                                        <img src={theme.icon} alt="" style={styles.chatIcon} />
                                         <div className="collbot-dot"></div>
                                         <div className="collbot-dot"></div>
                                         <div className="collbot-dot"></div>
@@ -150,7 +154,7 @@ const CollBot = ({
                                     onChange={(e) => setText(e.target.value)}
                                     onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                                     type="text"
-                                    placeholder="Type a message..."
+                                    placeholder="Ask anything about this platform"
                                     style={styles.input}
                                 />
                                 <button disabled={isTyping} onClick={sendMessage} style={styles.sendButton}>
@@ -167,19 +171,19 @@ const CollBot = ({
                         </div>}
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
-const styles: { [key: string]: React.CSSProperties } = {
+const styles = {
     chatButton: {
         position: "fixed", bottom: "10px", right: "10px", padding: "20px", fontSize: "20px", border: "none", borderRadius: "50%", cursor: "pointer"
-    },
+    } as React.CSSProperties,
     chatContainer: {
         fontFamily: "'Roboto', sans-serif",
         position: "fixed",
-        bottom: "50px",
-        right: "20px",
+        bottom: "10px",
+        right: "10px",
         width: "350px",
         height: "400px",
         background: "white",
@@ -189,27 +193,27 @@ const styles: { [key: string]: React.CSSProperties } = {
         display: "flex",
         gap: "15px",
         flexDirection: "column"
-    },
+    } as React.CSSProperties,
     header: {
-        background: "#6200ea", color: "white", padding: "10px", display: "flex", justifyContent: "space-between", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", alignItems: "center"
-    },
-    closeButton: { background: "none", border: "none", color: "white", fontSize: "18px", cursor: "pointer" },
-    captchaContainer: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1, gap: "15px" },
-    verifyButton: { background: "#6200ea", color: "white", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer" },
-    messageContainer: { flex: "1", display: "flex", flexDirection: "column", overflowY: "auto", padding: "10px" },
-    userMessage: { alignSelf: "flex-end", background: "#6200ea", color: "white", padding: "10px", borderRadius: "10px", marginBottom: "5px", maxWidth: "60%" },
-    botMessage: { alignSelf: "flex-start", background: "#ddd", padding: "10px", borderRadius: "10px", marginBottom: "5px", maxWidth: "100%" },
-    typingIndicator: { color: "gray", fontStyle: "italic" },
-    inputContainer: { display: "flex", padding: "10px", borderTop: "1px solid #ccc" },
-    input: { flex: 1, padding: "5px", border: "1px solid #ccc", borderRadius: "5px" },
-    sendButton: { padding: "5px 10px", color: "blue", border: "none", borderRadius: "5px", cursor: "pointer" },
+        color: "white", padding: "10px", display: "flex", justifyContent: "space-between", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", alignItems: "center"
+    } as React.CSSProperties,
+    closeButton: { background: "none", border: "none", color: "white", fontSize: "18px", cursor: "pointer" } as React.CSSProperties,
+    captchaContainer: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1, gap: "15px" } as React.CSSProperties,
+    verifyButton: { background: "#6200ea", color: "white", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer" } as React.CSSProperties,
+    messageContainer: { flex: "1", display: "flex", flexDirection: "column", overflowY: "auto", padding: "10px" } as React.CSSProperties,
+    userMessage: { alignSelf: "flex-end", background: "#6200ea", color: "white", padding: "10px", borderRadius: "10px", marginBottom: "5px", maxWidth: "60%" } as React.CSSProperties,
+    botMessage: { alignSelf: "flex-start", background: "#ddd", padding: "10px", borderRadius: "10px", marginBottom: "5px", maxWidth: "100%" } as React.CSSProperties,
+    typingIndicator: { color: "gray", fontStyle: "italic" } as React.CSSProperties,
+    inputContainer: { display: "flex", padding: "10px", borderTop: "1px solid #ccc" } as React.CSSProperties,
+    input: { flex: 1, padding: "5px", border: "1px solid #ccc", borderRadius: "5px" } as React.CSSProperties,
+    sendButton: { padding: "5px 10px", color: "blue", border: "none", borderRadius: "5px", cursor: "pointer" } as React.CSSProperties,
     chatIcon: {
-        width: "30px",
-        height: "30px",
+        width: "40px",
+        height: "40px",
         // marginRight: "10px",
         verticalAlign: "middle",
         // backgroundColor:"blue"
-    },
+    } as React.CSSProperties,
 };
 
 export default CollBot;
