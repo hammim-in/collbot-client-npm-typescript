@@ -3,7 +3,7 @@
 .npmrc
 # dependencies
 /node_modules
-/dist
+dist
 /.pnp
 .pnp.*
 .yarn/*

@@ -1,14 +1,16 @@
 {
   "name": "@hammim-in/collbot-client",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Collbot is an AI-driven chatbot solution that seamlessly integrates into your website via a simple package. Easily configure your chatbot with company-specific details, terms, and policies, enabling it to provide instant and accurate responses to customer queries. Enhance user engagement and automate customer interactions effortlessly with Collbot. 🚀",
   "keywords": [
     "collbot",
     "collbot-client",
     "@hammim-in",
+    "https://www.hammim.in",
     "Ham Mim"
   ],
-  "homepage": "https://collbot.hammim.in",
+  "categories": ["AI","Chat"],
+  "homepage": "https://www.collbot.hammim.in",
   "bugs": {
     "url": "https://github.com/hammim-in/collbot-client/issues"
   },
@@ -25,7 +27,7 @@
     "test": "npm run test",
     "rollup": "rollup -c --bundleConfigAsCjs",
     "build": "tsc",
-    "publish": "npm run rollup && npm publish --access public --tag alpha",
+    "publish": "npm run rollup && npm publish --access public --tag latest",
     "publish:both": "npm publish --access public && npm publish --registry=https://npm.pkg.github.com"
   },
   "dependencies": {
