@@ -18,7 +18,7 @@ const CollBot = ({
         theme: {
             icon: string,
             primaryColor: string,
-            secondryColor: string,
+            secondaryColor: string,
         }
     }) => {
     const [messages, setMessages] = useState<Array<{ sender: boolean; msg: string }>>([]);
