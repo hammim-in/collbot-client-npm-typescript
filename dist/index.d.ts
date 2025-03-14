@@ -5,9 +5,9 @@ declare global {
         grecaptcha: any;
     }
 }
-declare const CollBot: ({ AICHART_RECAPTCHA_FRONTED_KEY, YOUR_SITE_KEY }: {
-    AICHART_RECAPTCHA_FRONTED_KEY?: string;
-    YOUR_SITE_KEY?: string;
+declare const CollBot: ({ reCaptchaClientId, icon }: {
+    reCaptchaClientId?: string;
+    icon: string;
 }) => react_jsx_runtime.JSX.Element;
 
 export { CollBot as default };
