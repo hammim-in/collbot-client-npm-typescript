@@ -24,12 +24,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run test",
-    "rollup": "rollup -c --bundleConfigAsCjs",
-    "build": "tsc",
-    "publish": "npm run rollup && npm publish --access public --tag latest",
-    "publish:both": "npm publish --access public && npm publish --registry=https://npm.pkg.github.com"
-  },
+  "build": "rollup -c --bundleConfigAsCjs",
+  "rollup": "rollup -c --bundleConfigAsCjs",
+  "publish": "npm run build && npm publish --access public --tag latest",
+  "publish:both": "npm publish --access public && npm publish --registry=https://npm.pkg.github.com"
+},
+
   "dependencies": {
     "@types/react": "^19.0.10",
     "rollup": "^4.34.9"
