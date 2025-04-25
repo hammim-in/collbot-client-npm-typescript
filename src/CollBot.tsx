@@ -1,5 +1,6 @@
 // "use client";
 import React, { useEffect, useRef, useState } from "react";
+// import packageJson from '../package.json';
 import "./global.css";
 import { API_ROOT } from "./utils/Constents";
 
@@ -9,6 +10,7 @@ declare global {
     }
 }
 
+// const version = packageJson.version;
 const CollBot = ({
     reCaptchaClientId,
     theme,
@@ -117,7 +119,13 @@ const CollBot = ({
             {isOpen && (
                 <div style={styles.chatContainer}>
                     <div style={{ ...styles.header, background: theme.primaryColor }}>
-                        <img src={theme.icon} alt="" style={styles.chatIcon} />
+                        <div style={{display:"flex",gap:"4px"}}>
+                            <img src={theme.icon} alt="" style={styles.chatIcon} />
+                            <div style={{ fontSize: "6px", color: "white" }}>
+                                {/* Version: v{version} */}
+                                v 0.1.15
+                            </div>
+                        </div>
                         <button onClick={toggleChat} style={styles.closeButton}>✖</button>
                     </div>
 
@@ -132,7 +140,7 @@ const CollBot = ({
 
                                 {isTyping && (
                                     <div className="wave-loader" style={{ display: "flex", alignItems: "center", marginTop: "5px", gap: "10px" }}>
-                                        <img src={theme.icon} alt="" style={{ width: "40px", height: "40px"}} />
+                                        <img src={theme.icon} alt="" style={{ width: "40px", height: "40px" }} />
                                         <div className="dot-group">
                                             <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
                                             <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
