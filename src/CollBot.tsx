@@ -1,6 +1,6 @@
 // "use client";
 import React, { useEffect, useRef, useState } from "react";
-import "./global.css"
+import "./global.css";
 import { API_ROOT } from "./utils/Constents";
 
 declare global {
@@ -11,16 +11,17 @@ declare global {
 
 const CollBot = ({
     reCaptchaClientId,
-    theme
-}:
-    {
-        reCaptchaClientId?: string,
-        theme: {
-            icon: string,
-            primaryColor: string,
-            secondaryColor: string,
-        }
-    }) => {
+    theme,
+    ...props
+}: {
+    reCaptchaClientId?: string,
+    theme: {
+        icon: string,
+        primaryColor: string,
+        secondaryColor: string,
+    },
+    demo: boolean
+}) => {
     const [messages, setMessages] = useState<Array<{ sender: boolean; msg: string }>>([]);
     const [text, setText] = useState("");
     const [isTyping, setIsTyping] = useState(false);
@@ -65,7 +66,7 @@ const CollBot = ({
             const api = await fetch(`${API_ROOT}/api/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ msg: text, domain: window.location.origin }),
+                body: JSON.stringify({ msg: text, domain: props.demo ? "collbot.hammim.in" : window.location.origin }),
             });
             const json = await api.json();
 
@@ -83,11 +84,9 @@ const CollBot = ({
         }
     }, [messages]);
 
-
     useEffect(() => {
         if (typeof window !== "undefined") {
             if (reCaptchaClientId) {
-
                 const script = document.createElement("script");
                 script.src = `https://www.google.com/recaptcha/api.js?render=${reCaptchaClientId}`;
                 script.async = true;
@@ -102,7 +101,7 @@ const CollBot = ({
                     }, 500);
                 };
             } else {
-                setCaptchaVerified(true)
+                setCaptchaVerified(true);
             }
         }
     }, []);
@@ -112,19 +111,17 @@ const CollBot = ({
             {!isOpen && (
                 <button onClick={toggleChat} style={styles.chatButton}>
                     <img src={theme.icon} alt="" style={styles.chatIcon} />
-
                 </button>
             )}
 
             {isOpen && (
                 <div style={styles.chatContainer}>
-                    <div style={{ ...styles.header, background: theme.primaryColor, }}>
+                    <div style={{ ...styles.header, background: theme.primaryColor }}>
                         <img src={theme.icon} alt="" style={styles.chatIcon} />
-                        {/* <span> AI Chat</span> */}
                         <button onClick={toggleChat} style={styles.closeButton}>✖</button>
                     </div>
 
-                    {captchaVerified ?
+                    {captchaVerified ? (
                         <>
                             <div style={styles.messageContainer}>
                                 {messages.map((res, index) => (
@@ -132,18 +129,17 @@ const CollBot = ({
                                         {res.msg}
                                     </div>
                                 ))}
-                                {isTyping &&
 
-                                    <div style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: "5px"
-                                    }}>
-                                        <img src={theme.icon} alt="" style={styles.chatIcon} />
-                                        <div className="collbot-dot"></div>
-                                        <div className="collbot-dot"></div>
-                                        <div className="collbot-dot"></div>
-                                    </div>}
+                                {isTyping && (
+                                    <div className="wave-loader" style={{ display: "flex", alignItems: "center", marginTop: "5px", gap: "10px" }}>
+                                        <img src={theme.icon} alt="" style={{ width: "40px", height: "40px"}} />
+                                        <div className="dot-group">
+                                            <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
+                                            <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
+                                            <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div ref={messagesEndRef}></div>
                             </div>
@@ -162,18 +158,20 @@ const CollBot = ({
                                 </button>
                             </div>
                         </>
-
-                        : <div style={styles.captchaContainer}>
+                    ) : (
+                        <div style={styles.captchaContainer}>
                             <div className="collbot-bounce" style={{ fontSize: "40px" }}>🔒</div>
-
                             <h2>Verify You’re Human</h2>
-                            <button onClick={handleCaptchaVerification} style={styles.verifyButton}>✅ Verify & Start Chat</button>
-                        </div>}
+                            <button onClick={handleCaptchaVerification} style={styles.verifyButton}>
+                                ✅ Verify & Start Chat
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
         </div>
     );
-}
+};
 
 const styles = {
     chatButton: {
@@ -203,17 +201,10 @@ const styles = {
     messageContainer: { flex: "1", display: "flex", flexDirection: "column", overflowY: "auto", padding: "10px" } as React.CSSProperties,
     userMessage: { alignSelf: "flex-end", background: "#6200ea", color: "white", padding: "10px", borderRadius: "10px", marginBottom: "5px", maxWidth: "60%" } as React.CSSProperties,
     botMessage: { alignSelf: "flex-start", background: "#ddd", padding: "10px", borderRadius: "10px", marginBottom: "5px", maxWidth: "100%" } as React.CSSProperties,
-    typingIndicator: { color: "gray", fontStyle: "italic" } as React.CSSProperties,
     inputContainer: { display: "flex", padding: "10px", borderTop: "1px solid #ccc" } as React.CSSProperties,
     input: { flex: 1, padding: "5px", border: "1px solid #ccc", borderRadius: "5px" } as React.CSSProperties,
     sendButton: { padding: "5px 10px", color: "blue", border: "none", borderRadius: "5px", cursor: "pointer" } as React.CSSProperties,
-    chatIcon: {
-        width: "40px",
-        height: "40px",
-        // marginRight: "10px",
-        verticalAlign: "middle",
-        // backgroundColor:"blue"
-    } as React.CSSProperties,
+    chatIcon: { width: "40px", height: "40px", verticalAlign: "middle" } as React.CSSProperties,
 };
 
 export default CollBot;
