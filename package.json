@@ -1,6 +1,6 @@
 {
   "name": "@hammim-in/collbot-client",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Collbot is an AI-driven chatbot solution that seamlessly integrates into your website via a simple package. Easily configure your chatbot with company-specific details, terms, and policies, enabling it to provide instant and accurate responses to customer queries. Enhance user engagement and automate customer interactions effortlessly with Collbot. 🚀",
   "keywords": [
     "collbot",
@@ -26,8 +26,8 @@
   "scripts": {
   "build": "rollup -c --bundleConfigAsCjs",
   "rollup": "rollup -c --bundleConfigAsCjs",
-  "publish": "npm run build && npm publish --access public --tag latest",
-  "publish:both": "npm publish --access public && npm publish --registry=https://npm.pkg.github.com"
+  "deploy": "npm run build && npm publish --access public --tag latest",
+  "deploy:both": "npm publish --access public && npm publish --registry=https://npm.pkg.github.com"
 },
 
   "dependencies": {

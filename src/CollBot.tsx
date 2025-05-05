@@ -1,6 +1,5 @@
 // "use client";
 import React, { useEffect, useRef, useState } from "react";
-// import packageJson from '../package.json';
 import "./global.css";
 import { API_ROOT } from "./utils/Constents";
 
@@ -10,7 +9,6 @@ declare global {
     }
 }
 
-// const version = packageJson.version;
 const CollBot = ({
     reCaptchaClientId,
     theme,
@@ -111,7 +109,7 @@ const CollBot = ({
     return (
         <div style={{ zIndex: 10000 }}>
             {!isOpen && (
-                <button onClick={toggleChat} style={styles.chatButton}>
+                <button type="button" name="chat-button" onClick={toggleChat} style={styles.chatButton}>
                     <img src={theme.icon} alt="" style={styles.chatIcon} />
                 </button>
             )}
@@ -126,7 +124,7 @@ const CollBot = ({
                                 v 0.1.15
                             </div>
                         </div>
-                        <button onClick={toggleChat} style={styles.closeButton}>✖</button>
+                        <button type="button" name="close-chat" onClick={toggleChat} style={styles.closeButton}>✖</button>
                     </div>
 
                     {captchaVerified ? (
@@ -154,6 +152,7 @@ const CollBot = ({
 
                             <div style={styles.inputContainer}>
                                 <input
+                                name="text-box"
                                     value={text}
                                     onChange={(e) => setText(e.target.value)}
                                     onKeyDown={(e) => e.key === "Enter" && sendMessage()}
@@ -161,7 +160,10 @@ const CollBot = ({
                                     placeholder="Ask anything about this platform"
                                     style={styles.input}
                                 />
-                                <button disabled={isTyping} onClick={sendMessage} style={styles.sendButton}>
+                                <button 
+                                type="button"
+                                name="send idon"
+                                disabled={isTyping} onClick={sendMessage} style={styles.sendButton}>
                                     ➤
                                 </button>
                             </div>
