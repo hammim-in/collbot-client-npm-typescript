@@ -110,7 +110,7 @@ const CollBot = ({
         <div style={{ zIndex: 10000 }}>
             {!isOpen && (
                 <button type="button" name="chat-button" onClick={toggleChat} style={styles.chatButton}>
-                    <img src={theme.icon} alt="" style={styles.chatIcon} />
+                    <img src={theme.icon} alt={theme.icon} style={styles.chatIcon} />
                 </button>
             )}
 
@@ -118,7 +118,7 @@ const CollBot = ({
                 <div style={styles.chatContainer}>
                     <div style={{ ...styles.header, background: theme.primaryColor }}>
                         <div style={{display:"flex",gap:"4px"}}>
-                            <img src={theme.icon} alt="" style={styles.chatIcon} />
+                            <img src={theme.icon} alt={theme.icon} style={styles.chatIcon} />
                             <div style={{ fontSize: "6px", color: "white" }}>
                                 {/* Version: v{version} */}
                                 v 0.1.15
@@ -138,7 +138,7 @@ const CollBot = ({
 
                                 {isTyping && (
                                     <div className="wave-loader" style={{ display: "flex", alignItems: "center", marginTop: "5px", gap: "10px" }}>
-                                        <img src={theme.icon} alt="" style={{ width: "40px", height: "40px" }} />
+                                        <img src={theme.icon} alt={theme.icon} style={{ width: "40px", height: "40px" }} />
                                         <div className="dot-group">
                                             <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
                                             <div style={{ backgroundColor: theme.primaryColor }} className="collbot-dot"></div>
